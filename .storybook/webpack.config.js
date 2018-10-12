@@ -6,5 +6,6 @@ module.exports = (baseConfig, env, defaultConfig) => {
       loaders: ["style-loader", "css-loader", "sass-loader"],
       include: path.resolve(__dirname, "../")
   });
+  defaultConfig.resolve.extensions.push(".scss");
   return defaultConfig;
 };

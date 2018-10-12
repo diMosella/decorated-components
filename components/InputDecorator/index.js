@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import '../../styles/main.scss';
+import '../../styles/main';
 
 const withThemeGeoWeb = (InputComponent) => {
   class DecoratedInput extends PureComponent {
