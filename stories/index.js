@@ -1,13 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import Button from '../components/Button';
+import { Button, BrowserButton } from '../components/Button';
 
-storiesOf('Button', module)
+storiesOf('GeoWebButton', module)
   .add('with text', () => (
     <Button onClick={action('clicked')}>Hello Button</Button>
   ))
   .add('with some emoji', () => (
-    <Button onClick={action('clicked')}><span role="img" aria-label="so cool">😀 😎 👍 💯</span></Button>
+    <Button onClick={action('clicked')}><span role='img' aria-label='so cool'>😀 😎 👍 💯</span></Button>
   ));
-  
+
+storiesOf('BrowserButton', module)
+  .add('with text', () => (
+    <BrowserButton onClick={action('clicked')}>Hello Button</BrowserButton>
+  ))
+  .add('with some emoji', () => (
+    <BrowserButton onClick={action('clicked')}><span role='img' aria-label='so cool'>😀 😎 👍 💯</span></BrowserButton>
+  ));
