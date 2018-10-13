@@ -32,6 +32,7 @@ $color: $quintairy;
     opacity: 0;
     border-radius: 50%;
     z-index: 10;
+    background-color: hsl(197, 95%, 40%);
   }
   > span:nth-of-type(2) {
     padding: 0.3rem 0.5rem;
@@ -39,14 +40,13 @@ $color: $quintairy;
   }
 }
 &:hover {
-  border-color: $bdr-low-pri;
-  border-bottom-color: $bdr-high;
-  border-right-color: $bdr-high;
-  transition: border 0.1s linear 0.4s;
+  color: hsl(50, 0%, 100%);
+  border-color: hsl(197, 99%, 30%);
+  border-top-color: $bdr-high;
+  transition: border, color 0.1s linear 0.4s;
   > span:nth-of-type(1) {
     transform: scale(1);
     opacity: 1;
-    background-color: hsl(197, 85%, 32%);
     border-radius: 0.2rem;
   }
 }
