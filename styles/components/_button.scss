@@ -1,4 +1,5 @@
-$font: sans-serif !default;
+$font-family: sans-serif !default;
+$font-size: 1rem !default;
 $primary: red !default;
 $secondary: blue !default;
 $tertiairy: yellow !default;
@@ -17,28 +18,36 @@ $color: $quintairy;
   border-right-color: $bdr-low-sec;
   color: $color;
   border-radius: 0.3rem;
-  padding: 0.3rem 0.5rem;
-  font-family: $font;
+  font-family: $font-family;
+  font-size: $font-size;
   cursor: pointer;
-  box-shadow: inset 1rem 1rem 1rem $bg;
-  transition: box-shadow 0.4s lineair 0.1s;
   display: grid;
-  span {
+  > span {
     grid-column: 1;
     grid-row: 1;
   }
-  span:nth-of-type(2) {
+  > span:nth-of-type(1) {
     transition: all 0.4s ease-in-out 0.1s;
     transform: scale(0);
     opacity: 0;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  > span:nth-of-type(2) {
+    padding: 0.3rem 0.5rem;
+    z-index: 20;
   }
 }
 &:hover {
-  box-shadow: inset 0.1rem 0.1rem 0.1rem $bdr-low-sec;
-  span:nth-of-type(2){
+  border-color: $bdr-low-pri;
+  border-bottom-color: $bdr-high;
+  border-right-color: $bdr-high;
+  transition: border 0.1s linear 0.4s;
+  > span:nth-of-type(1) {
     transform: scale(1);
     opacity: 1;
-    background-color: $bdr-low-sec;
+    background-color: hsl(197, 85%, 32%);
+    border-radius: 0.2rem;
   }
 }
 button {

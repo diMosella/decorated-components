@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import { Button, BrowserButton } from '../components/Button';
 
 addDecorator(story => (
-  <div style={{ padding: '0.3rem' }}>
+  <div style={{ padding: '0.3rem', width: 'max-content' }}>
     {story()}
   </div>
 ));
