@@ -7,8 +7,9 @@ const withThemeGeoWeb = (InputComponent) => {
     render () {
       const { type, onChange, children, value, ...passThroughProps } = this.props;
       const wrappedOnChange = (evt) => onChange(evt, value);
-      return <label>
-        {children}
+      return <label className='decorated-input'>
+        <span>{children}</span>
+        <span>{children}</span>
         <InputComponent type={type} value={value} onChange={wrappedOnChange} {...passThroughProps} />
       </label>;
     }
