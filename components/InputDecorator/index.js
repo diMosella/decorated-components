@@ -5,12 +5,13 @@ import '../../styles/main';
 const withThemeGeoWeb = (InputComponent) => {
   class DecoratedInput extends PureComponent {
     render () {
-      const { type, onChange, children, value, ...passThroughProps } = this.props;
+      const { type, onChange, children, value, active, disabled, ...passThroughProps } = this.props;
       const wrappedOnChange = (evt) => onChange(evt, value);
-      return <label className='decorated-input'>
+      return <label className='decorated-input' active={active} disabled={disabled}>
         <span />
         <span>{children}</span>
-        <InputComponent type={type} value={value} onChange={wrappedOnChange} {...passThroughProps} />
+        <InputComponent type={type} value={value} active={active} disabled={disabled}
+          onChange={wrappedOnChange} {...passThroughProps} />
       </label>;
     }
   };
