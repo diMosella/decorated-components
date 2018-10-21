@@ -2,15 +2,27 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/main';
 
+const filterProps = (props, predicate) =>
+  (Object.entries(props).filter((entry) => predicate(...entry))
+    .reduce((accumulator, entry) => {
+      accumulator[entry[0]] = entry[1];
+      return accumulator;
+    }, {}));
+
 const withThemeGeoWeb = (InputComponent) => {
   class DecoratedInput extends PureComponent {
     render () {
-      const { type, onChange, children, value, active, disabled, ...passThroughProps } = this.props;
+      const { type, onChange, children, value, disabled, ...passThroughProps } = this.props;
+      const dataSet = filterProps(this.props, (key, value) => key.startsWith('data-'));
+      if (disabled === true) {
+        dataSet['data-disabled'] = true;
+      }
+      console.log(disabled, dataSet['data-disabled']);
       const wrappedOnChange = (evt) => onChange(evt, value);
-      return <label className='decorated-input' active={active} disabled={disabled}>
+      return <label className='decorated-input' {...dataSet} disabled={dataSet['data-disabled']}>
         <span />
         <span>{children}</span>
-        <InputComponent type={type} value={value} active={active} disabled={disabled}
+        <InputComponent type={type} value={value} disabled={dataSet['data-disabled']}
           onChange={wrappedOnChange} {...passThroughProps} />
       </label>;
     }

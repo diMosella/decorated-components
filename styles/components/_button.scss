@@ -1,15 +1,19 @@
 $font-family: sans-serif !default;
 $font-size: 1rem !default;
-$primary: red !default;
-$secondary: blue !default;
-$tertiairy: yellow !default;
-$quadrairy: brown !default;
-$quintairy: violet !default;
-$bg: $primary;
-$bdr-high: $secondary;
-$bdr-low-pri: $tertiairy;
-$bdr-low-sec: $quadrairy; 
-$color: $quintairy;
+$back-base-color: hsl(200, 100%, 35%) !default;
+$fore-base-color: hsl(50, 10%, 90%) !default;
+$bg: $back-base-color;
+$bg-high: desaturate(lighten($back-base-color, 5%), 5%);
+$bg-low: desaturate(lighten($back-base-color, 25%), 70%);
+$bdr-high: lighten($back-base-color, 3%);
+$bdr-high-sec: lighten($back-base-color, 5%);
+$bdr-low-pri: darken($back-base-color, 2%);
+$bdr-low-sec: darken($back-base-color, 3%);
+$bdr-low-ter: darken($back-base-color, 5%);
+$bdr-low-qur: desaturate(lighten($back-base-color, 20%), 80%);
+$color: $fore-base-color;
+$clr-high: desaturate(lighten($fore-base-color, 10%), 10%);
+$clr-low: saturate(darken($fore-base-color, 10%), 15%);
 
 & {
   background-color: $bg;
@@ -34,16 +38,18 @@ $color: $quintairy;
     opacity: 0;
     border-radius: 50% 25%;
     z-index: 10;
-    background-color: hsl(197, 95%, 40%);
+    background-color: $bg-high;
   }
   > span:nth-of-type(2) {
+    transition: all 0.3s ease-in-out 0.1s;
     padding: 0.3rem 0.5rem;
     z-index: 20;
+    background-color: transparent;
   }
 }
-&:hover {
-  color: hsl(50, 0%, 100%);
-  border-color: hsl(197, 99%, 30%);
+&:hover:not([disabled]):not(:active), &[data-hover=true] {
+  color: $clr-high;
+  border-color: $bdr-low-ter;
   border-top-color: $bdr-high;
   transition: border, color 0.1s linear 0.3s;
   > span:nth-of-type(1) {
@@ -52,23 +58,31 @@ $color: $quintairy;
     border-radius: 0.2rem;
   }
 }
-&:active, &[active] {
+&:active, &[data-active=true] {
   color: $color;
   cursor: default;
   border-color: $bdr-low-sec;
   border-bottom-color: $bdr-high;
-  border-right-color: hsl(197, 99%, 40%);
-  transition: background-color 0.3s linear 0.1s;
+  border-right-color: $bdr-high-sec;
   transition: border, color 0.1s linear 0.3s;
-  background-color: hsl(197, 99%, 30%);
   > span:nth-of-type(1) {
     transform: scale(0);
     opacity: 0;
     border-radius: 50% 25%;
   }
+  > span:nth-of-type(2) {
+    background-color: $bdr-high-sec;
+  }
 }
-&:focus {
+&:focus, &[data-focus=true] {
   outline: none;
+}
+&:disabled, &[data-disabled=true] {
+  cursor: not-allowed;
+  border-color: $bdr-low-qur;
+  transition: border, color 0.1s linear 0.3s;
+  background-color: $bg-low;
+  color: $clr-low;
 }
 button {
   display: none;
