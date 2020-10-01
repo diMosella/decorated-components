@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import '../../styles/main';
+import '../../stories/stories';
 
 const filterProps = (props, predicate) =>
   (Object.entries(props).filter((entry) => predicate(...entry))
@@ -30,7 +31,10 @@ const withThemeGeoWeb = (InputComponent) => {
 
   DecoratedInput.propTypes = {
     type: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    children: PropTypes.element,
+    value: PropTypes.any,
+    disabled: PropTypes.bool
   };
 
   return DecoratedInput;

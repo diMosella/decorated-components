@@ -31,7 +31,7 @@ const createElements = () => {
       </BrowserButton>);
   });
   return elements;
-}
+};
 
 addDecorator(story => (
   <div className='decorator'>

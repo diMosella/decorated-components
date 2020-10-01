@@ -28,6 +28,7 @@ $clr-low: saturate(darken($fore-base-color, 10%), 15%);
   text-align: center;
   cursor: pointer;
   display: grid;
+  width: max-content;
   > span {
     grid-column: 1;
     grid-row: 1;
